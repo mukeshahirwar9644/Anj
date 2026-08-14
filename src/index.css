@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAF6F0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C85A32;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B85028;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism */
+  .glass-header {
+    background: rgba(250, 246, 240, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(234, 220, 201, 0.5);
+  }
+
+  .glass-card {
+    background: rgba(253, 251, 247, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(234, 220, 201, 0.6);
+  }
+
+  .glass-dark {
+    background: rgba(42, 24, 16, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(200, 90, 50, 0.2);
+  }
+
+  /* Editorial Organic Image Mask */
+  .organic-mask {
+    border-radius: 2rem 6rem 2rem 6rem;
+  }
+
+  .organic-mask-alt {
+    border-radius: 6rem 2rem 6rem 2rem;
+  }
+
+  /* Smooth Text Gradient */
+  .text-gradient-terracotta {
+    background: linear-gradient(135deg, #C85A32 0%, #7E341B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
