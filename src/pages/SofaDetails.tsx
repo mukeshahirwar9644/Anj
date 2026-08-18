@@ -4,6 +4,7 @@ import { SOFAS_DATA } from '../data/sofas';
 import { ProductGallery } from '../components/furniture/ProductGallery';
 import { Button } from '../components/ui/Button';
 import { getProductWhatsAppUrl } from '../lib/whatsapp';
+import { trackWhatsAppClick } from '../lib/activityLogger';
 import { ArrowLeft, CheckCircle2, MessageCircle, Ruler } from 'lucide-react';
 
 export const SofaDetails: React.FC = () => {
@@ -122,6 +123,7 @@ export const SofaDetails: React.FC = () => {
                 href={getProductWhatsAppUrl(sofa.name)}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick(`Product Details Page: ${sofa.name}`, `Inquiry for sofa "${sofa.name}" (${sofa.priceLabel})`)}
                 className="w-full"
               >
                 <Button variant="whatsapp" size="lg" className="w-full">

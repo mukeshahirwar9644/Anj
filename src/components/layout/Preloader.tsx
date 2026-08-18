@@ -27,29 +27,42 @@ export const Preloader: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center gap-4 text-center px-4"
           >
-            {/* Logo Icon */}
-            <div className="w-16 h-16 rounded-2xl bg-terracotta-500 text-cream-100 flex items-center justify-center shadow-glow">
-              <svg viewBox="0 0 100 100" fill="none" className="w-10 h-10">
-                <path
-                  d="M 20 62 C 20 40, 32 30, 50 30 C 68 30, 80 40, 80 62 C 80 65, 78 68, 74 68 L 26 68 C 22 68, 20 65, 20 62 Z"
-                  fill="currentColor"
-                />
-                <path d="M 28 54 C 38 58, 62 58, 72 54" stroke="#FAF6F0" strokeWidth="3" strokeLinecap="round"/>
-                <rect x="22" y="70" width="56" height="5" rx="2.5" fill="#EADCC9"/>
-                <rect x="25" y="75" width="4" height="6" fill="#C85A32"/>
-                <rect x="71" y="75" width="4" height="6" fill="#C85A32"/>
+            {/* Logo Emblem */}
+            <div className="w-20 h-20 rounded-full overflow-hidden shadow-glow">
+              <svg viewBox="0 0 200 200" fill="none" className="w-full h-full">
+                <circle cx="100" cy="100" r="95" fill="#F4EAE0" stroke="#D35F36" strokeWidth="3"/>
+                <circle cx="100" cy="15" r="3.5" fill="#D35F36"/>
+                <circle cx="100" cy="185" r="3.5" fill="#D35F36"/>
+                <circle cx="15" cy="100" r="3.5" fill="#D35F36"/>
+                <circle cx="185" cy="100" r="3.5" fill="#D35F36"/>
+                <circle cx="142" cy="26" r="3.5" fill="#D35F36"/>
+                <circle cx="174" cy="58" r="3.5" fill="#D35F36"/>
+                <circle cx="174" cy="142" r="3.5" fill="#D35F36"/>
+                <circle cx="142" cy="174" r="3.5" fill="#D35F36"/>
+                <circle cx="58" cy="174" r="3.5" fill="#D35F36"/>
+                <circle cx="26" cy="142" r="3.5" fill="#D35F36"/>
+                <circle cx="26" cy="58" r="3.5" fill="#D35F36"/>
+                <circle cx="58" cy="26" r="3.5" fill="#D35F36"/>
+
+                <rect x="52" y="125" width="10" height="15" rx="3" fill="#582415"/>
+                <rect x="138" y="125" width="10" height="15" rx="3" fill="#582415"/>
+                <rect x="48" y="65" width="104" height="65" rx="20" fill="#D35F36"/>
+                <rect x="36" y="80" width="22" height="50" rx="10" fill="#B74B26"/>
+                <rect x="142" y="80" width="22" height="50" rx="10" fill="#B74B26"/>
+                <rect x="50" y="82" width="100" height="48" rx="12" fill="#D35F36"/>
+                <line x1="100" y1="83" x2="100" y2="130" stroke="#FAF4EE" strokeWidth="3" strokeLinecap="round"/>
               </svg>
             </div>
 
-            <h1 className="font-serif text-3xl md:text-4xl font-normal tracking-tight">
-              Gaddi <span className="text-terracotta-500 font-sans font-light">&amp;</span> Co.
+            <h1 className="font-serif text-3xl md:text-4xl font-normal tracking-tight text-cream-50">
+              Gaddi &amp; Co.
             </h1>
-            <p className="text-[10px] tracking-[0.3em] uppercase text-sand/80 font-medium">
-              Custom Sofas &amp; Comfort Furniture
+            <p className="text-sm font-serif italic text-cream-200/80">
+              Custom sofas, made to fit
             </p>
 
             {/* Subtle Progress Bar */}
-            <div className="w-36 h-0.5 bg-brown-900 overflow-hidden rounded-full mt-4">
+            <div className="w-36 h-0.5 bg-brown-900 overflow-hidden rounded-full mt-2">
               <motion.div
                 initial={{ x: '-100%' }}
                 animate={{ x: '0%' }}

@@ -1,7 +1,8 @@
-// Environment configurable WhatsApp and Contact numbers
-export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '919876543210';
-export const PHONE_NUMBER = import.meta.env.VITE_PHONE_NUMBER || '+919876543210';
-export const COMPANY_EMAIL = import.meta.env.VITE_COMPANY_EMAIL || 'hello@gaddiandco.com';
+// Environment configurable WhatsApp, Contact numbers, Email, and Address
+export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '916378319693';
+export const PHONE_NUMBER = import.meta.env.VITE_PHONE_NUMBER || '+91 63783 19693';
+export const COMPANY_EMAIL = import.meta.env.VITE_COMPANY_EMAIL || 'hello.gaddiandco@gmail.com';
+export const STUDIO_ADDRESS = import.meta.env.VITE_STUDIO_ADDRESS || 'House no . 42A, Avantika, Shastri Nagar, Ghaziabad, Uttar Pradesh - 201002';
 
 /**
  * Generate a WhatsApp click-to-chat URL with custom encoded text

@@ -6,6 +6,7 @@ import { Logo } from '../ui/Logo';
 import { Button } from '../ui/Button';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { getWhatsAppUrl } from '../../lib/whatsapp';
+import { trackWhatsAppClick } from '../../lib/activityLogger';
 
 export const NAV_LINKS = [
   { name: 'Home', path: '/' },
@@ -72,6 +73,7 @@ export const Navbar: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('Header Desktop WhatsApp Button')}
                 className="p-2.5 rounded-full bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-300 shrink-0"
                 aria-label="WhatsApp Chat"
                 title="Chat on WhatsApp"
@@ -92,6 +94,7 @@ export const Navbar: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('Header Mobile WhatsApp Icon')}
                 className="p-2 rounded-full bg-[#25D366]/10 text-[#25D366]"
                 aria-label="WhatsApp Chat"
               >
@@ -167,6 +170,10 @@ export const Navbar: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  trackWhatsAppClick('Mobile Menu Drawer WhatsApp CTA');
+                  closeMobileMenu();
+                }}
                 className="w-full"
               >
                 <Button variant="whatsapp" size="lg" className="w-full justify-between">

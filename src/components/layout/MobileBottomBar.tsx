@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MessageCircle, Phone, Sparkles } from 'lucide-react';
 import { getWhatsAppUrl, PHONE_NUMBER } from '../../lib/whatsapp';
+import { trackWhatsAppClick, trackCallClick } from '../../lib/activityLogger';
 
 export const MobileBottomBar: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const MobileBottomBar: React.FC = () => {
           href={getWhatsAppUrl()}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('Mobile Bottom Sticky Bar - WhatsApp')}
           className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-[#25D366] text-white active:scale-95 transition-transform"
         >
           <MessageCircle className="w-5 h-5 mb-0.5" />
@@ -21,6 +23,7 @@ export const MobileBottomBar: React.FC = () => {
         {/* Phone Call Button */}
         <a
           href={`tel:${PHONE_NUMBER}`}
+          onClick={() => trackCallClick('Mobile Bottom Sticky Bar - Call')}
           className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-brown-900 text-cream-100 border border-sand/20 active:scale-95 transition-transform"
         >
           <Phone className="w-5 h-5 mb-0.5 text-sand" />

@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { useLenis } from './hooks/useLenis';
 import { ScrollToTop } from './components/layout/ScrollToTop';
 import { Preloader } from './components/layout/Preloader';
@@ -17,11 +17,25 @@ import { CushionsComfort } from './pages/CushionsComfort';
 import { Customize } from './pages/Customize';
 import { Contact } from './pages/Contact';
 import { SofaDetails } from './pages/SofaDetails';
+import { Logs } from './pages/Logs';
 import { NotFound } from './pages/NotFound';
 
 const AppContent: React.FC = () => {
   // Initialize Lenis Smooth Scroll momentum
   useLenis();
+  const navigate = useNavigate();
+
+  // Secret Admin Shortcut: Ctrl + Shift + L (or Cmd + Shift + L)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'l') {
+        e.preventDefault();
+        navigate('/admin-logs');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [navigate]);
 
   return (
     <div className="min-h-screen flex flex-col bg-cream-100 text-brown-900 selection:bg-terracotta-500 selection:text-white">
@@ -46,6 +60,9 @@ const AppContent: React.FC = () => {
           <Route path="/customize" element={<Customize />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/sofa/:id" element={<SofaDetails />} />
+          <Route path="/admin" element={<Logs />} />
+          <Route path="/admin-logs" element={<Logs />} />
+          <Route path="/logs" element={<Logs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

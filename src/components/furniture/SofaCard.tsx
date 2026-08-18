@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle, ArrowRight, Sparkles } from 'lucide-react';
 import type { SofaProduct } from '../../data/sofas';
 import { getProductWhatsAppUrl } from '../../lib/whatsapp';
+import { trackWhatsAppClick } from '../../lib/activityLogger';
 import { Button } from '../ui/Button';
 
 interface SofaCardProps {
@@ -83,6 +84,7 @@ export const SofaCard: React.FC<SofaCardProps> = ({ sofa }) => {
           href={getProductWhatsAppUrl(sofa.name)}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick(`Product Card: ${sofa.name}`, `Inquiry for sofa "${sofa.name}" (${sofa.priceLabel})`)}
           className="p-2.5 rounded-full bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors duration-300"
           title="Inquire via WhatsApp"
         >

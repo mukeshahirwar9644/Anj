@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { getWhatsAppUrl } from '../../lib/whatsapp';
+import { trackWhatsAppClick } from '../../lib/activityLogger';
 
 export const FloatingWhatsApp: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const FloatingWhatsApp: React.FC = () => {
       href={getWhatsAppUrl()}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackWhatsAppClick('Floating WhatsApp Button', 'User clicked sticky bottom-right WhatsApp button')}
       className="fixed bottom-20 right-5 lg:bottom-8 lg:right-8 z-40 flex items-center gap-3 p-3.5 md:p-4 rounded-full bg-[#25D366] text-white shadow-elevated hover:shadow-[0_0_30px_rgba(37,211,102,0.5)] hover:scale-105 transition-all duration-300 group"
       aria-label="Chat on WhatsApp"
       title="Chat with Gaddi & Co."

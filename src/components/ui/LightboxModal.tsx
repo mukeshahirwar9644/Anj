@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { GalleryItem } from '../../data/gallery';
 import { getProductWhatsAppUrl } from '../../lib/whatsapp';
+import { trackWhatsAppClick } from '../../lib/activityLogger';
 import { Button } from './Button';
 
 interface LightboxModalProps {
@@ -126,6 +127,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
                 href={getProductWhatsAppUrl(currentItem.title)}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick(`Gallery Lightbox: ${currentItem.title}`, `Inquiry from gallery modal for "${currentItem.title}"`)}
                 className="w-full"
               >
                 <Button variant="whatsapp" className="w-full">

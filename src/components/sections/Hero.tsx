@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sparkles, MessageCircle, ShieldCheck, Layers, Ruler } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { getWhatsAppUrl } from '../../lib/whatsapp';
+import { trackWhatsAppClick } from '../../lib/activityLogger';
 
 export const Hero: React.FC = () => {
   const { scrollY } = useScroll();
@@ -74,6 +75,7 @@ export const Hero: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('Hero Section WhatsApp CTA')}
                 className="w-full sm:w-auto"
               >
                 <Button variant="whatsapp" size="lg" className="w-full sm:w-auto">

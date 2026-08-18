@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getCustomizerWhatsAppUrl } from '../lib/whatsapp';
+import { trackFormSubmit, trackWhatsAppClick } from '../lib/activityLogger';
 import { Button } from '../components/ui/Button';
 import { CheckCircle2, MessageCircle, Sparkles, Ruler, Sliders, Send } from 'lucide-react';
 
@@ -41,7 +42,11 @@ export const Customize: React.FC = () => {
   const nextStep = () => setCurrentStep((prev) => Math.min(6, prev + 1));
   const prevStep = () => setCurrentStep((prev) => Math.max(1, prev - 1));
 
-  const onSubmit = (_data: CustomizationFormValues) => {
+  const onSubmit = (data: CustomizationFormValues) => {
+    trackFormSubmit(
+      'Customizer Quote Form',
+      `Customer: ${data.name} (${data.city})\nPhone: ${data.phone}\nEmail: ${data.email}\nStyle: ${selectedStyle}\nFabric: ${selectedFabric}\nColor: ${selectedColor}\nDimensions: ${dimensions}\nComfort: ${selectedComfort}`
+    );
     setIsSubmitted(true);
   };
 
@@ -522,6 +527,12 @@ export const Customize: React.FC = () => {
                   })}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackWhatsAppClick(
+                      'Customizer Success WhatsApp CTA',
+                      `Custom sofa request: ${selectedStyle} | ${selectedFabric} | ${selectedColor} | ${dimensions}`
+                    )
+                  }
                 >
                   <Button variant="whatsapp" size="lg">
                     <MessageCircle className="w-5 h-5 mr-2" />

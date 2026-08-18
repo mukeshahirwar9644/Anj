@@ -1,12 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <rect width="100" height="100" rx="20" fill="#2A1810"/>
-  <!-- Arch sofa silhouette -->
-  <path d="M 20 62 C 20 40, 32 30, 50 30 C 68 30, 80 40, 80 62 C 80 65, 78 68, 74 68 L 26 68 C 22 68, 20 65, 20 62 Z" fill="#C85A32"/>
-  <!-- Sofa cushion fold -->
-  <path d="M 28 54 C 38 58, 62 58, 72 54" stroke="#FAF6F0" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Base frame line -->
-  <rect x="22" y="70" width="56" height="5" rx="2.5" fill="#EADCC9"/>
-  <!-- Legs -->
-  <rect x="25" y="75" width="4" height="6" fill="#C85A32"/>
-  <rect x="71" y="75" width="4" height="6" fill="#C85A32"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Outer Dotted Circular Emblem -->
+  <circle cx="100" cy="100" r="95" fill="#F4EAE0" stroke="#D35F36" stroke-width="3"/>
+  
+  <!-- Perimeter Stitched Dots (12-point clock dial) -->
+  <!-- Top / Bottom -->
+  <circle cx="100" cy="15" r="3" fill="#D35F36"/>
+  <circle cx="100" cy="185" r="3" fill="#D35F36"/>
+  <!-- Left / Right -->
+  <circle cx="15" cy="100" r="3" fill="#D35F36"/>
+  <circle cx="185" cy="100" r="3" fill="#D35F36"/>
+  <!-- 30 deg intervals -->
+  <circle cx="142" cy="26" r="3" fill="#D35F36"/>
+  <circle cx="174" cy="58" r="3" fill="#D35F36"/>
+  <circle cx="174" cy="142" r="3" fill="#D35F36"/>
+  <circle cx="142" cy="174" r="3" fill="#D35F36"/>
+  <circle cx="58" cy="174" r="3" fill="#D35F36"/>
+  <circle cx="26" cy="142" r="3" fill="#D35F36"/>
+  <circle cx="26" cy="58" r="3" fill="#D35F36"/>
+  <circle cx="58" cy="26" r="3" fill="#D35F36"/>
+
+  <!-- Sofa Legs -->
+  <rect x="52" y="125" width="10" height="15" rx="3" fill="#582415"/>
+  <rect x="138" y="125" width="10" height="15" rx="3" fill="#582415"/>
+
+  <!-- Sofa Main Backrest Cushion -->
+  <rect x="48" y="65" width="104" height="65" rx="20" fill="#D35F36"/>
+
+  <!-- Left Armrest -->
+  <rect x="36" y="80" width="22" height="50" rx="10" fill="#B74B26"/>
+
+  <!-- Right Armrest -->
+  <rect x="142" y="80" width="22" height="50" rx="10" fill="#B74B26"/>
+
+  <!-- Sofa Front Cushions -->
+  <rect x="50" y="82" width="100" height="48" rx="12" fill="#D35F36"/>
+
+  <!-- Center Cushion Split Seam Line -->
+  <line x1="100" y1="83" x2="100" y2="130" stroke="#FAF4EE" stroke-width="3" stroke-linecap="round"/>
 </svg>

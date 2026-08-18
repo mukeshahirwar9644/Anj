@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import { getWhatsAppUrl, PHONE_NUMBER } from '../../lib/whatsapp';
+import { trackWhatsAppClick, trackCallClick } from '../../lib/activityLogger';
 import { MessageCircle, Phone, Sparkles } from 'lucide-react';
 
 export const ContactCTA: React.FC = () => {
@@ -34,6 +35,7 @@ export const ContactCTA: React.FC = () => {
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('ContactCTA Section - WhatsApp')}
           >
             <Button variant="whatsapp" size="lg">
               <MessageCircle className="w-5 h-5" />
@@ -41,7 +43,10 @@ export const ContactCTA: React.FC = () => {
             </Button>
           </a>
 
-          <a href={`tel:${PHONE_NUMBER}`}>
+          <a
+            href={`tel:${PHONE_NUMBER}`}
+            onClick={() => trackCallClick('ContactCTA Section - Call')}
+          >
             <Button variant="outline" size="lg" className="border-cream-100/30 text-cream-100 hover:border-sand hover:text-white">
               <Phone className="w-4 h-4" />
               <span>Call Us Direct</span>

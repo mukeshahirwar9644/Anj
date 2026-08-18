@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { getWhatsAppUrl, PHONE_NUMBER, COMPANY_EMAIL } from '../lib/whatsapp';
+import { getWhatsAppUrl, PHONE_NUMBER, COMPANY_EMAIL, STUDIO_ADDRESS } from '../lib/whatsapp';
+import { trackWhatsAppClick, trackCallClick, trackEmailClick, trackFormSubmit } from '../lib/activityLogger';
 import { Button } from '../components/ui/Button';
 import { MessageCircle, Phone, Mail, MapPin, Send, CheckCircle2, Clock } from 'lucide-react';
 
@@ -27,7 +28,11 @@ export const Contact: React.FC = () => {
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = (_data: ContactFormValues) => {
+  const onSubmit = (data: ContactFormValues) => {
+    trackFormSubmit(
+      'Contact Page Form',
+      `Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nRequirement: ${data.requirement}\nMessage: ${data.message}`
+    );
     setSubmitted(true);
   };
 
@@ -55,6 +60,7 @@ export const Contact: React.FC = () => {
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('Contact Page - WhatsApp Card')}
             className="bg-cream-50 p-8 rounded-3xl border border-sand/70 shadow-soft hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
           >
             <div>
@@ -76,6 +82,7 @@ export const Contact: React.FC = () => {
           {/* Call Card */}
           <a
             href={`tel:${PHONE_NUMBER}`}
+            onClick={() => trackCallClick('Contact Page - Call Card')}
             className="bg-cream-50 p-8 rounded-3xl border border-sand/70 shadow-soft hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
           >
             <div>
@@ -204,6 +211,7 @@ export const Contact: React.FC = () => {
                     href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick('Contact Page Form - WhatsApp Direct Button')}
                     className="w-full sm:w-auto"
                   >
                     <Button variant="whatsapp" size="lg" type="button" className="w-full sm:w-auto">
@@ -222,7 +230,12 @@ export const Contact: React.FC = () => {
                 <p className="text-sm text-brown-700 font-light mb-6">
                   Thank you. Our studio team will get in touch with you shortly.
                 </p>
-                <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('Contact Page - Post Submit WhatsApp')}
+                >
                   <Button variant="whatsapp" size="md">
                     Continue On WhatsApp
                   </Button>
@@ -240,17 +253,25 @@ export const Contact: React.FC = () => {
               <ul className="space-y-4 text-xs text-brown-800 font-light">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-terracotta-600 shrink-0 mt-0.5" />
-                  <span>Gaddi &amp; Co. Craft Studio &amp; Experience Center, Design District, India</span>
+                  <span>{STUDIO_ADDRESS}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-terracotta-600 shrink-0" />
-                  <a href={`tel:${PHONE_NUMBER}`} className="font-medium hover:text-terracotta-600">
+                  <a
+                    href={`tel:${PHONE_NUMBER}`}
+                    onClick={() => trackCallClick('Contact Page - Studio Details Phone')}
+                    className="font-medium hover:text-terracotta-600"
+                  >
                     {PHONE_NUMBER}
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-terracotta-600 shrink-0" />
-                  <a href={`mailto:${COMPANY_EMAIL}`} className="font-medium hover:text-terracotta-600">
+                  <a
+                    href={`mailto:${COMPANY_EMAIL}`}
+                    onClick={() => trackEmailClick('Contact Page - Studio Details Email')}
+                    className="font-medium hover:text-terracotta-600"
+                  >
                     {COMPANY_EMAIL}
                   </a>
                 </li>
